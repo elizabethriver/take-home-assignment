@@ -1,35 +1,31 @@
-import './App.css';
-import React from 'react';
+import "./App.css";
+import React from "react";
 
 function App() {
-  const [textInput, setTextInput] = React.useState('Here is some example text.');
-  const [conversionMode, setConversionMode] = React.useState('lowercase');
-  const [textOutput, setTextOutput] = React.useState('');
+  const [textInput, setTextInput] = React.useState(
+    "Here is some example text."
+  );
+  const [conversionMode, setConversionMode] = React.useState("lowercase");
+  const [textOutput, setTextOutput] = React.useState("");
 
-  const handleRadioChange = event => {
-      setConversionMode(event.target.value);
-  }
-
-  const handleTextareaChange = event => {
-    setTextInput(event.target.value);
-   
+  const handleRadioChange = (event) => {
+    setConversionMode(event.target.value);
   };
 
-  const handleSubmit = event => {
-    event.preventDefault();
-   
-    if (conversionMode === "uppercase" ) {
+  const handleTextareaChange = (event) => {
+    setTextInput(event.target.value);
+  };
 
-      const textUppercaseModified = textInput.toUpperCase()
-      setTextOutput(textUppercaseModified)
-      
-    }else{
-     
-      const textUppercaseModified = textInput.toLowerCase()
-      setTextOutput(textUppercaseModified)
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    if (conversionMode === "uppercase") {
+      const textUppercaseModified = textInput.toUpperCase();
+      setTextOutput(textUppercaseModified);
+    } else {
+      const textUppercaseModified = textInput.toLowerCase();
+      setTextOutput(textUppercaseModified);
     }
- 
-  
   };
 
   return (
@@ -37,7 +33,7 @@ function App() {
       <header>
         <h1>Career Lab text-case converter</h1>
       </header>
-      <form >
+      <form>
         <div className="form-control form-control__text">
           <label htmlFor="text">Text to be converted:</label>
           <textarea
@@ -68,10 +64,14 @@ function App() {
           />
           <label htmlFor="conversion-1">Convert text to uppercase</label>
         </div>
-        <button type="button" onClick={handleSubmit}>Submit</button>
+        <button type="button" onClick={handleSubmit}>
+          Submit
+        </button>
         <div className="form-control form-control__text u-mt-3">
           <label htmlFor="result">Converted text:</label>
-          <output id="result" class="result">{textOutput}</output>
+          <output id="result" class="result">
+            {textOutput}
+          </output>
         </div>
       </form>
     </div>
