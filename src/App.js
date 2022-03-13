@@ -7,16 +7,29 @@ function App() {
   const [textOutput, setTextOutput] = React.useState('');
 
   const handleRadioChange = event => {
-    setConversionMode(event.target.value);
+      setConversionMode(event.target.value);
   }
 
   const handleTextareaChange = event => {
     setTextInput(event.target.value);
+   
   };
 
   const handleSubmit = event => {
     event.preventDefault();
-    setTextOutput('Your formatted text will go here!')
+   
+    if (conversionMode === "uppercase" ) {
+
+      const textUppercaseModified = textInput.toUpperCase()
+      setTextOutput(textUppercaseModified)
+      
+    }else{
+     
+      const textUppercaseModified = textInput.toLowerCase()
+      setTextOutput(textUppercaseModified)
+    }
+ 
+  
   };
 
   return (
@@ -24,7 +37,7 @@ function App() {
       <header>
         <h1>Career Lab text-case converter</h1>
       </header>
-      <form onSubmit={handleSubmit}>
+      <form >
         <div className="form-control form-control__text">
           <label htmlFor="text">Text to be converted:</label>
           <textarea
@@ -55,7 +68,7 @@ function App() {
           />
           <label htmlFor="conversion-1">Convert text to uppercase</label>
         </div>
-        <button type="button">Submit</button>
+        <button type="button" onClick={handleSubmit}>Submit</button>
         <div className="form-control form-control__text u-mt-3">
           <label htmlFor="result">Converted text:</label>
           <output id="result" class="result">{textOutput}</output>
